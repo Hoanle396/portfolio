@@ -8,20 +8,34 @@ const nav = [
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
   { href: '#skills', label: 'Skills' },
-  { href: '#contact', label: 'Contact' }
+  { href: '#contact', label: 'Contact' },
 ];
 
 export function Header() {
   const { toggle, theme } = useTheme();
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center">
-      <div className="pointer-events-auto mt-4 flex w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-neutral-900/70 px-6 py-3 backdrop-blur-lg">
-        <Link href="/" className="font-semibold tracking-tight text-white">HL</Link>
-        <nav className="hidden gap-6 text-sm font-medium text-white/70 md:flex">
-          {nav.map(i => <Link key={i.href} href={i.href} className="transition hover:text-white">{i.label}</Link>)}
+      <div className="pointer-events-auto mt-4 flex w-full max-w-5xl items-center justify-between rounded-full border border-neutral-900/10 bg-white/70 px-6 py-3 backdrop-blur-lg dark:border-white/10 dark:bg-neutral-900/70">
+        <Link href="/" className="font-semibold tracking-tight text-neutral-900 dark:text-white">
+          HL
+        </Link>
+        <nav className="hidden gap-6 text-sm font-medium text-neutral-600 dark:text-white/70 md:flex">
+          {nav.map((i) => (
+            <Link
+              key={i.href}
+              href={i.href}
+              className="transition hover:text-neutral-900 dark:hover:text-white"
+            >
+              {i.label}
+            </Link>
+          ))}
         </nav>
         <div className="flex items-center gap-4">
-          <button onClick={toggle} aria-label="Toggle theme" className="group relative h-8 w-8 overflow-hidden rounded-full border border-white/10 bg-white/5 text-xs text-white/70 ring-offset-neutral-900 transition hover:text-white hover:ring-2 hover:ring-brand-500/40">
+          <button
+            onClick={toggle}
+            aria-label="Toggle theme"
+            className="group relative h-8 w-8 overflow-hidden rounded-full border border-neutral-900/10 bg-neutral-900/5 text-xs text-neutral-600 ring-offset-white transition hover:text-neutral-900 hover:ring-2 hover:ring-brand-500/40 dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:ring-offset-neutral-900 dark:hover:text-white"
+          >
             <motion.span
               key={theme}
               initial={{ y: 8, opacity: 0 }}

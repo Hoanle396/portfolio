@@ -17,20 +17,20 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: 'en_US',
-    type: 'website'
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@hoanle',
-  }
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
       <head />
-      <body className="min-h-screen bg-neutral-950 text-neutral-100 antialiased selection:bg-brand-500/30 selection:text-white">
-  <Providers>{children}</Providers>
+      <body className="min-h-screen antialiased selection:bg-brand-500/30 selection:text-white">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

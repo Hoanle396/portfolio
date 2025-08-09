@@ -17,15 +17,18 @@ export const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEleme
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur transition-colors hover:border-brand-500/40', className)}
+      className={cn(
+        'group relative overflow-hidden rounded-xl border border-neutral-900/10 bg-neutral-900/5 p-5 backdrop-blur transition-colors hover:border-brand-500/40 dark:border-white/10 dark:bg-white/[0.02]',
+        className,
+      )}
       {...props}
     />
-  )
+  ),
 );
 Card.displayName = 'Card';
 
 export const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold tracking-tight text-white/90">
+  <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold tracking-tight text-neutral-800 dark:text-white/90">
     <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
     <span className="gradient-text bg-clip-text text-transparent">{children}</span>
     <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />

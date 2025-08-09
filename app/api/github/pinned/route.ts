@@ -1,15 +1,13 @@
 import { NextResponse } from 'next/server';
 
-const PINNED = [
-  'hoanle396'
-];
+const PINNED = ['hoanle396'];
 
 export async function GET() {
   try {
     const username = 'hoanle396';
     const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
       headers: { 'User-Agent': 'portfolio', Accept: 'application/vnd.github+json' },
-      next: { revalidate: 3600 }
+      next: { revalidate: 3600 },
     });
     if (!res.ok) throw new Error('GitHub fetch failed');
     const data = await res.json();
@@ -22,7 +20,7 @@ export async function GET() {
         description: r.description,
         stars: r.stargazers_count,
         url: r.html_url,
-        language: r.language
+        language: r.language,
       }));
     return NextResponse.json(filtered);
   } catch (e) {

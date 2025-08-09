@@ -11,7 +11,7 @@ export const education: EducationItem[] = [
     degree: 'B.S. Software Engineering',
     period: '—',
     details: [
-      'Coursework: Software Architecture, Distributed Systems, Database Systems, Algorithms'
-    ]
-  }
+      'Coursework: Software Architecture, Distributed Systems, Database Systems, Algorithms',
+    ],
+  },
 ];
