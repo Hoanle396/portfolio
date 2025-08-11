@@ -17,7 +17,10 @@ const markdownComponents: Components = {
     const lang = /language-(\w+)/.exec(className || '')?.[1];
     if (inline) {
       return (
-        <code className="rounded bg-neutral-900/10 px-1 py-0.5 text-[11px] dark:bg-white/10" {...rest}>
+        <code
+          className="rounded bg-neutral-900/10 px-1 py-0.5 text-[11px] dark:bg-white/10"
+          {...rest}
+        >
           {children}
         </code>
       );
@@ -93,7 +96,8 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: "Hi, I'm the embedded AI assistant. Ask me about Hoan Le's projects, experience, skills, or how to get in touch!",
+      content:
+        "Hi, I'm the embedded AI assistant. Ask me about Hoan Le's projects, experience, skills, or how to get in touch!",
     },
   ]);
   const [input, setInput] = useState('');
@@ -152,7 +156,25 @@ export function ChatWidget() {
         aria-label={open ? 'Close chat assistant' : 'Open chat assistant'}
         className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 via-indigo-500 to-fuchsia-500 text-white shadow-lg shadow-brand-500/30 transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
       >
-        {open ? '✕' : 'AI'}
+        <span className="relative z-10 font-semibold tracking-wide select-none">
+          {open ? '✕' : 'AI'}
+        </span>
+        {!open && (
+          <span className="pointer-events-none absolute inset-0">
+            {/* subtle inner glow */}
+            <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 blur-sm transition-opacity group-hover:opacity-40" />
+            {/* stars kept inside circle to avoid positional drift */}
+            <span className="absolute top-1 right-1 text-[9px] text-yellow-300 drop-shadow animate-pulse">
+              ★
+            </span>
+            <span className="absolute bottom-1 left-1 text-[10px] text-amber-200 animate-[ping_2s_ease-in-out_infinite]">
+              ★
+            </span>
+            <span className="absolute top-1 left-1/2 -translate-x-1/2 text-[7px] text-yellow-200 animate-pulse [animation-delay:300ms]">
+              ★
+            </span>
+          </span>
+        )}
       </button>
       <AnimatePresence>
         {open && (
