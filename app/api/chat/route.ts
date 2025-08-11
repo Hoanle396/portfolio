@@ -109,7 +109,7 @@ export async function POST(req: NextRequest) {
 
     // Gemini provider path
     // Gemini does not support a system role the same way; include systemPrompt as an initial user instruction
-    const geminiModel = body?.model || 'gemini-1.5-flash';
+    const geminiModel = body?.model || 'gemini-2.5-flash';
     const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${geminiKey}`;
     const geminiContents = [
       {
