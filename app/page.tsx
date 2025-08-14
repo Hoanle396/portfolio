@@ -52,8 +52,7 @@ function Hero() {
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="#projects">View Projects</PrimaryButton>
+          <div className="flex relative flex-wrap gap-4 z-[1000]">
             <GhostButton href={siteConfig.links.cv} target="_blank" rel="noopener noreferrer">
               View CV
             </GhostButton>
