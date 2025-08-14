@@ -1,6 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { SocialIcons } from '../components/icons/social';
+import dynamic from 'next/dynamic';
+const Hero3D = dynamic(() => import('./(components)/hero-3d').then((m) => m.Hero3D), {
+  ssr: false,
+});
 import { Card, FadeIn, SectionTitle } from '../components/ui';
 import { siteConfig } from '../config/site';
 import { education } from '../data/education';
@@ -24,47 +28,51 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="flex min-h-[70vh] flex-col justify-center gap-10 py-24">
-      <FadeIn>
-        <div className="inline-flex items-center gap-2 rounded-full border border-neutral-900/10 bg-neutral-900/5 px-4 py-1 text-xs text-neutral-500 backdrop-blur dark:border-white/10 dark:bg-white/[0.02] dark:text-white/60">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          Available for opportunities
-        </div>
-      </FadeIn>
-      <FadeIn delay={0.1}>
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
-          <span className="gradient-text">Hoan Le</span> builds scalable web & blockchain products.
-        </h1>
-      </FadeIn>
-      <FadeIn delay={0.15}>
-        <p className="max-w-2xl text-lg text-neutral-600 dark:text-white/60">
-          Full‑stack developer (2+ yrs) across Node.js / NestJS, Next.js, Go, Solidity &
-          Kubernetes—shipping secure, performant applications.
-        </p>
-      </FadeIn>
-      <FadeIn delay={0.2}>
-        <div className="flex flex-wrap gap-4">
-          <PrimaryButton href="#projects">View Projects</PrimaryButton>
-          <GhostButton href={siteConfig.links.cv} target="_blank" rel="noopener noreferrer">
-            View CV
-          </GhostButton>
-          <div className="flex items-center gap-3 text-neutral-500 dark:text-white/60">
-            <SocialLink href={siteConfig.links.github} label="GitHub">
-              <SocialIcons.Github size={18} />
-            </SocialLink>
-            <SocialLink href={siteConfig.links.npm} label="NPM">
-              <SocialIcons.PackageOpen size={18} />
-            </SocialLink>
-            <SocialLink href={`mailto:${siteConfig.links.email}`} label="Email">
-              <SocialIcons.Mail size={18} />
-            </SocialLink>
+    <div className="relative w-full h-auto">
+      <section className="flex min-h-[70vh] flex-col justify-center gap-10 py-24">
+        <FadeIn>
+          <div className="inline-flex items-center gap-2 rounded-full border border-neutral-900/10 bg-neutral-900/5 px-4 py-1 text-xs text-neutral-500 backdrop-blur dark:border-white/10 dark:bg-white/[0.02] dark:text-white/60">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            Available for opportunities
           </div>
-        </div>
-      </FadeIn>
-    </section>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+            <span className="gradient-text">Hoan Le</span> builds scalable web & blockchain
+            products.
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p className="max-w-2xl text-lg text-neutral-600 dark:text-white/60">
+            Full‑stack developer (2+ yrs) across Node.js / NestJS, Next.js, Go, Solidity &
+            Kubernetes—shipping secure, performant applications.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.2}>
+          <div className="flex flex-wrap gap-4">
+            <PrimaryButton href="#projects">View Projects</PrimaryButton>
+            <GhostButton href={siteConfig.links.cv} target="_blank" rel="noopener noreferrer">
+              View CV
+            </GhostButton>
+            <div className="flex items-center gap-3 text-neutral-500 dark:text-white/60">
+              <SocialLink href={siteConfig.links.github} label="GitHub">
+                <SocialIcons.Github size={18} />
+              </SocialLink>
+              <SocialLink href={siteConfig.links.npm} label="NPM">
+                <SocialIcons.PackageOpen size={18} />
+              </SocialLink>
+              <SocialLink href={`mailto:${siteConfig.links.email}`} label="Email">
+                <SocialIcons.Mail size={18} />
+              </SocialLink>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+      <Hero3D />
+    </div>
   );
 }
 
