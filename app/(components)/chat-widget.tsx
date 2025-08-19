@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
+import { Send } from 'lucide-react';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -81,12 +82,12 @@ const markdownComponents: Components = {
 function TypingIndicator() {
   return (
     <div className="mr-auto flex items-center gap-2 rounded-lg bg-neutral-900/5 px-3 py-2 text-xs text-neutral-500 dark:bg-white/5 dark:text-white/50">
+      <span>Thinking</span>
       <span className="inline-flex gap-1">
         <span className="h-1 w-1 animate-bounce rounded-full bg-brand-500 [animation-delay:0ms]" />
         <span className="h-1 w-1 animate-bounce rounded-full bg-brand-500 [animation-delay:120ms]" />
         <span className="h-1 w-1 animate-bounce rounded-full bg-brand-500 [animation-delay:240ms]" />
       </span>
-      <span>Thinking…</span>
     </div>
   );
 }
@@ -107,6 +108,24 @@ export function ChatWidget() {
   useEffect(() => {
     if (listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
   }, [messages, open]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 680) {
+        setOpen(true); // Open chat widget on desktop
+      } else {
+        setOpen(false); // Close chat widget on smaller screens
+      }
+    };
+
+    // Initial check
+    const timeout = setTimeout(handleResize, 500);
+
+    // Cleanup event listener on unmount
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   const submit = useCallback(async () => {
     if (!input.trim() || loading) return;
@@ -238,7 +257,7 @@ export function ChatWidget() {
                   disabled={!input.trim() || loading}
                   className="rounded-md bg-gradient-to-r from-brand-500 to-indigo-500 px-3 py-2 text-xs font-medium text-white shadow disabled:opacity-40"
                 >
-                  Send
+                  <Send size={18} />
                 </button>
               </div>
             </form>
