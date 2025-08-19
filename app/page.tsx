@@ -278,7 +278,7 @@ function GhostButton({ href, children, ...rest }: any) {
     <Link
       href={href}
       {...rest}
-      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+      className="inline-flex items-center gap-2 rounded-full border dark:border-white/10 dark:bg-white/[0.03] px-6 py-2 text-sm font-medium dark:text-white/80 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
     >
       <span>{children}</span>
     </Link>
@@ -289,7 +289,7 @@ function SocialLink({ href, children, label }: any) {
     <Link
       href={href}
       aria-label={label}
-      className="text-white/50 transition hover:text-white"
+      className="dark:text-white/50 transition dark:hover:text-white"
       target="_blank"
       rel="noopener noreferrer"
     >
