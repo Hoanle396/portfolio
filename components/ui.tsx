@@ -4,10 +4,10 @@ import { forwardRef } from 'react';
 
 export const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
   <motion.div
-    initial={{ opacity: 0, y: 16 }}
+    initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-100px' }}
-    transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay }}
+    viewport={{ once: true, margin: '-80px' }}
+    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1], delay }}
   >
     {children}
   </motion.div>
@@ -18,7 +18,7 @@ export const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEleme
     <div
       ref={ref}
       className={cn(
-        'group relative overflow-hidden rounded-xl border border-neutral-900/10 bg-neutral-900/5 p-5 backdrop-blur transition-colors hover:border-brand-500/40 dark:border-white/10 dark:bg-white/[0.02] card-hover',
+        'group relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 backdrop-blur-sm transition hover:border-brand-500/20 card-hover',
         className,
       )}
       {...props}
@@ -27,10 +27,17 @@ export const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEleme
 );
 Card.displayName = 'Card';
 
-export const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold tracking-tight text-neutral-800 dark:text-white/90">
-    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-    <span className="gradient-text bg-clip-text text-transparent">{children}</span>
-    <span className="h-px flex-1 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-  </h2>
+export const SectionTitle = ({
+  children,
+  sub,
+}: {
+  children: React.ReactNode;
+  sub?: string;
+}) => (
+  <div className="mb-12">
+    <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+      {children}
+    </h2>
+    {sub && <p className="mt-2 text-sm text-zinc-500">{sub}</p>}
+  </div>
 );

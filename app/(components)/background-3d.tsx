@@ -34,11 +34,11 @@ function Particles({ count = 1500 }: { count?: number }) {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#93c5fd"
+          color="#c084fc"
           size={0.04}
           sizeAttenuation
           transparent
-          opacity={0.5}
+          opacity={0.45}
           depthWrite={false}
         />
       </points>

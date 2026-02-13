@@ -1,0 +1,133 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Modern gradients -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Code Editor Window - Browser tab style -->
+  <g filter="url(#glow)">
+    <!-- Window frame -->
+    <rect x="40" y="55" width="120" height="90" rx="8" stroke="url(#primaryGrad)" stroke-width="2" fill="none" opacity="0.6"/>
+    
+    <!-- Window dots (close, minimize, maximize) -->
+    <circle cx="50" cy="65" r="3" fill="#ff5f57" opacity="0.8"/>
+    <circle cx="60" cy="65" r="3" fill="#ffbd2e" opacity="0.8"/>
+    <circle cx="70" cy="65" r="3" fill="#28ca42" opacity="0.8"/>
+    
+    <!-- Code lines inside window -->
+    <line x1="50" y1="80" x2="90" y2="80" stroke="url(#accentGrad)" stroke-width="2" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="x2" values="90;95;90" dur="3s" repeatCount="indefinite"/>
+    </line>
+    <line x1="50" y1="90" x2="110" y2="90" stroke="url(#primaryGrad)" stroke-width="2" stroke-linecap="round" opacity="0.6">
+      <animate attributeName="x2" values="110;115;110" dur="3.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="60" y1="100" x2="100" y2="100" stroke="url(#accentGrad)" stroke-width="2" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="x2" values="100;105;100" dur="4s" repeatCount="indefinite"/>
+    </line>
+    <line x1="60" y1="110" x2="85" y2="110" stroke="url(#primaryGrad)" stroke-width="2" stroke-linecap="round" opacity="0.6">
+      <animate attributeName="x2" values="85;90;85" dur="3.2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="50" y1="120" x2="120" y2="120" stroke="url(#accentGrad)" stroke-width="2" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="x2" values="120;125;120" dur="3.8s" repeatCount="indefinite"/>
+    </line>
+    <line x1="60" y1="130" x2="95" y2="130" stroke="url(#primaryGrad)" stroke-width="2" stroke-linecap="round" opacity="0.6">
+      <animate attributeName="x2" values="95;100;95" dur="4.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Code brackets wrapping the editor -->
+  <path d="M 30 75 L 25 85 Q 22 100 25 115 L 30 125" 
+        stroke="url(#primaryGrad)" 
+        stroke-width="2.5" 
+        stroke-linecap="round" 
+        fill="none" 
+        opacity="0.5">
+    <animate attributeName="d" 
+             values="M 30 75 L 25 85 Q 22 100 25 115 L 30 125;M 30 75 L 23 85 Q 20 100 23 115 L 30 125;M 30 75 L 25 85 Q 22 100 25 115 L 30 125" 
+             dur="4s" 
+             repeatCount="indefinite"/>
+  </path>
+  
+  <path d="M 170 75 L 175 85 Q 178 100 175 115 L 170 125" 
+        stroke="url(#accentGrad)" 
+        stroke-width="2.5" 
+        stroke-linecap="round" 
+        fill="none" 
+        opacity="0.5">
+    <animate attributeName="d" 
+             values="M 170 75 L 175 85 Q 178 100 175 115 L 170 125;M 170 75 L 177 85 Q 180 100 177 115 L 170 125;M 170 75 L 175 85 Q 178 100 175 115 L 170 125" 
+             dur="4s" 
+             repeatCount="indefinite"/>
+  </path>
+  
+  <!-- "Hoàn Lê" text before cursor -->
+  <text x="55" y="126" font-family="'Inter', 'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="url(#accentGrad)" letter-spacing="0.5">
+    Hoàn Lê
+  </text>
+
+  <!-- Cursor typing indicator (right after text) -->
+  <rect x="102" y="118" width="2" height="10" fill="url(#accentGrad)" opacity="0.9">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Floating tags representing web technologies -->
+  <g opacity="0.7">
+    <!-- HTML tag -->
+    <text x="45" y="45" font-family="monospace" font-size="11" fill="url(#primaryGrad)" font-weight="600">
+      &lt;/&gt;
+    </text>
+    
+    <!-- Function bracket -->
+    <text x="140" y="45" font-family="monospace" font-size="11" fill="url(#accentGrad)" font-weight="600">
+      { }
+    </text>
+    
+    <!-- Component tag -->
+    <text x="45" y="160" font-family="monospace" font-size="10" fill="url(#accentGrad)" font-weight="600">
+      &lt;div&gt;
+    </text>
+    
+    <!-- Arrow function -->
+    <text x="125" y="160" font-family="monospace" font-size="11" fill="url(#primaryGrad)" font-weight="600">
+      =&gt;
+    </text>
+  </g>
+  
+  <!-- Decorative particles -->
+  <circle cx="35" cy="50" r="2" fill="#4facfe" opacity="0.6">
+    <animate attributeName="cy" values="50;46;50" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="165" cy="52" r="2" fill="#764ba2" opacity="0.6">
+    <animate attributeName="cx" values="165;168;165" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="38" cy="150" r="2" fill="#667eea" opacity="0.5">
+    <animate attributeName="cy" values="150;147;150" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="155" cy="148" r="2.5" fill="#00f2fe" opacity="0.5">
+    <animate attributeName="cx" values="155;158;155" dur="4.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

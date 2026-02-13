@@ -12,7 +12,7 @@ export function ScrollProgress() {
   if (!mounted) return null;
   return (
     <motion.div
-      className="scroll-progress-bar bg-gradient-to-r from-brand-500 via-indigo-500 to-fuchsia-500 origin-left"
+      className="scroll-progress-bar bg-brand-500 origin-left"
       style={{ scaleX }}
     />
   );

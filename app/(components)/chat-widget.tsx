@@ -19,7 +19,7 @@ const markdownComponents: Components = {
     if (inline) {
       return (
         <code
-          className="rounded bg-neutral-900/10 px-1 py-0.5 text-[11px] dark:bg-white/10"
+          className="rounded bg-zinc-200 px-1 py-0.5 text-[11px] dark:bg-zinc-700"
           {...rest}
         >
           {children}
@@ -28,7 +28,7 @@ const markdownComponents: Components = {
     }
     return (
       <pre
-        className="mt-2 max-h-52 overflow-auto rounded-md bg-neutral-900/90 p-3 text-[11px] text-white dark:bg-neutral-800"
+        className="mt-2 max-h-52 overflow-auto rounded-md bg-zinc-900 p-3 text-[11px] text-white dark:bg-zinc-800"
         data-lang={lang}
         {...rest}
       >
@@ -42,7 +42,7 @@ const markdownComponents: Components = {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline decoration-dotted underline-offset-2 hover:text-brand-500"
+        className="underline decoration-dotted underline-offset-2 hover:text-brand-400"
         {...props}
       >
         {children}
@@ -65,7 +65,7 @@ const markdownComponents: Components = {
   },
   strong({ children, ...props }) {
     return (
-      <strong className="font-semibold text-neutral-900 dark:text-white" {...props}>
+      <strong className="font-semibold text-zinc-900 dark:text-white" {...props}>
         {children}
       </strong>
     );
@@ -81,7 +81,7 @@ const markdownComponents: Components = {
 
 function TypingIndicator() {
   return (
-    <div className="mr-auto flex items-center gap-2 rounded-lg bg-neutral-900/5 px-3 py-2 text-xs text-neutral-500 dark:bg-white/5 dark:text-white/50">
+    <div className="mr-auto flex items-center gap-2 rounded-lg bg-zinc-100 px-3 py-2 text-xs text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
       <span>Thinking</span>
       <span className="inline-flex gap-1">
         <span className="h-1 w-1 animate-bounce rounded-full bg-brand-500 [animation-delay:0ms]" />
@@ -112,16 +112,14 @@ export function ChatWidget() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 680) {
-        setOpen(true); // Open chat widget on desktop
+        setOpen(true);
       } else {
-        setOpen(false); // Close chat widget on smaller screens
+        setOpen(false);
       }
     };
 
-    // Initial check
     const timeout = setTimeout(handleResize, 500);
 
-    // Cleanup event listener on unmount
     return () => {
       clearTimeout(timeout);
     };
@@ -173,16 +171,14 @@ export function ChatWidget() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Close chat assistant' : 'Open chat assistant'}
-        className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 via-indigo-500 to-fuchsia-500 text-white shadow-lg shadow-brand-500/30 transition hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+        className="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-brand-500 text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-600 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
       >
         <span className="relative z-10 font-semibold tracking-wide select-none">
           {open ? '✕' : 'AI'}
         </span>
         {!open && (
           <span className="pointer-events-none absolute inset-0">
-            {/* subtle inner glow */}
             <span className="absolute inset-0 rounded-full bg-white/10 opacity-0 blur-sm transition-opacity group-hover:opacity-40" />
-            {/* stars kept inside circle to avoid positional drift */}
             <span className="absolute top-1 right-1 text-[9px] text-yellow-300 drop-shadow animate-pulse">
               ★
             </span>
@@ -202,13 +198,13 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-            className="fixed bottom-24 right-5 z-50 flex w-80 flex-col overflow-hidden rounded-xl border border-neutral-900/10 bg-white/90 backdrop-blur-lg dark:border-white/10 dark:bg-neutral-900/90"
+            className="fixed bottom-24 right-5 z-50 flex w-80 flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white/95 backdrop-blur-lg dark:border-zinc-800 dark:bg-zinc-900/95"
           >
-            <div className="flex items-center justify-between border-b border-neutral-900/5 px-4 py-2 text-xs font-medium tracking-wide text-neutral-500 dark:border-white/5 dark:text-white/50">
+            <div className="flex items-center justify-between border-b border-zinc-100 px-4 py-2 text-xs font-medium tracking-wide text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
               <span>AI Assistant</span>
               <button
                 onClick={() => setMessages((m) => m.slice(0, 1))}
-                className="rounded px-2 py-0.5 text-[10px] uppercase tracking-wide text-neutral-400 transition hover:bg-neutral-900/5 dark:hover:bg-white/5"
+                className="rounded px-2 py-0.5 text-[10px] uppercase tracking-wide text-zinc-400 transition hover:bg-zinc-100 dark:hover:bg-zinc-800"
               >
                 Reset
               </button>
@@ -219,9 +215,9 @@ export function ChatWidget() {
             >
               {messages.map((m, i) => {
                 const baseUser =
-                  'ml-auto max-w-[85%] rounded-lg bg-gradient-to-br from-brand-500/90 to-fuchsia-500/90 px-3 py-2 text-white shadow text-xs whitespace-pre-wrap';
+                  'ml-auto max-w-[85%] rounded-lg bg-brand-500 px-3 py-2 text-white shadow text-xs whitespace-pre-wrap';
                 const baseAssistant =
-                  'mr-auto max-w-[90%] rounded-lg bg-neutral-900/5 px-3 py-2 text-[13px] leading-relaxed text-neutral-700 dark:bg-white/5 dark:text-white/80';
+                  'mr-auto max-w-[90%] rounded-lg bg-zinc-100 px-3 py-2 text-[13px] leading-relaxed text-zinc-700 dark:bg-zinc-800 dark:text-zinc-200';
                 return (
                   <div key={i} className={m.role === 'user' ? baseUser : baseAssistant}>
                     {m.role === 'assistant' ? (
@@ -241,7 +237,7 @@ export function ChatWidget() {
                 e.preventDefault();
                 submit();
               }}
-              className="border-t border-neutral-900/10 p-2 dark:border-white/10"
+              className="border-t border-zinc-100 p-2 dark:border-zinc-800"
             >
               <div className="flex items-end gap-2">
                 <textarea
@@ -250,12 +246,12 @@ export function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={onKey}
                   placeholder="Ask about Hoan..."
-                  className="max-h-24 flex-1 resize-none rounded-md border border-neutral-900/10 bg-white/80 px-2 py-2 text-xs text-neutral-700 outline-none ring-brand-400 focus:ring dark:border-white/10 dark:bg-neutral-800/60 dark:text-white/80"
+                  className="max-h-24 flex-1 resize-none rounded-md border border-zinc-200 bg-white px-2 py-2 text-xs text-zinc-700 outline-none ring-brand-400 focus:ring dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || loading}
-                  className="rounded-md bg-gradient-to-r from-brand-500 to-indigo-500 px-3 py-2 text-xs font-medium text-white shadow disabled:opacity-40"
+                  className="rounded-md bg-brand-500 px-3 py-2 text-xs font-medium text-white shadow transition hover:bg-brand-600 disabled:opacity-40"
                 >
                   <Send size={18} />
                 </button>

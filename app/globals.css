@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --bg: 240 10% 4%;
-  --fg: 0 0% 100%;
+  --bg: 240 6% 4%;
+  --fg: 0 0% 98%;
 }
 
 html {
@@ -18,119 +18,73 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #09090b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e1e1e;
+  background: #27272a;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e2e2e;
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.shimmer {
-  background: linear-gradient(
-    110deg,
-    rgba(255, 255, 255, 0.05) 8%,
-    rgba(255, 255, 255, 0.15) 18%,
-    rgba(255, 255, 255, 0.05) 33%
-  );
-  background-size: 200% 100%;
+  background: #3f3f46;
 }
 
 /* --- Custom animation helpers --- */
 @keyframes floatSlow {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-28px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-28px); }
+  100% { transform: translateY(0px); }
 }
 @keyframes pulseGlow {
-  0%,
-  100% {
-    opacity: 0.55;
-    filter: blur(32px);
-  }
-  50% {
-    opacity: 0.9;
-    filter: blur(40px);
-  }
+  0%, 100% { opacity: 0.55; filter: blur(32px); }
+  50% { opacity: 0.9; filter: blur(40px); }
 }
 @keyframes marqueeX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.animate-float-slow {
-  animation: floatSlow 10s ease-in-out infinite;
-}
-.animate-glow {
-  animation: pulseGlow 8s ease-in-out infinite;
-}
-.marquee-track {
-  animation: marqueeX 30s linear infinite;
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Subtle grid background for hero */
+.animate-float-slow { animation: floatSlow 10s ease-in-out infinite; }
+.animate-glow { animation: pulseGlow 8s ease-in-out infinite; }
+.marquee-track { animation: marqueeX 30s linear infinite; }
+.animate-slide-up { animation: slideUp 0.6s cubic-bezier(.4,0,.2,1) both; }
+
+/* Subtle grid background */
 .bg-grid::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 64px 64px,
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 64px 64px;
+    linear-gradient(to right, rgba(168, 85, 247, 0.04) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(to bottom, rgba(168, 85, 247, 0.04) 1px, transparent 1px) 0 0 / 64px 64px;
   mask: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 70%);
   pointer-events: none;
-  opacity: 0.4;
 }
 
-/* Glass & gradient utilities */
-.glass {
-  position: relative;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
-  backdrop-filter: blur(28px) saturate(140%);
-  -webkit-backdrop-filter: blur(28px) saturate(140%);
-}
-.gradient-border:before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(120deg, #3b82f6, #8b5cf6, #ec4899);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0.65;
-}
+/* Card system */
 .card-hover {
   transition:
-    background 0.5s ease,
-    transform 0.6s cubic-bezier(0.34, 1.56, 0.34, 1);
+    border-color 0.3s ease,
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.34, 1),
+    box-shadow 0.3s ease;
 }
 .card-hover:hover {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.08);
+}
+
+/* Glass */
+.glass {
+  position: relative;
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
 }
 
 /* Scroll progress bar */
@@ -138,8 +92,15 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
+  height: 2px;
   width: 100%;
   z-index: 60;
   pointer-events: none;
+}
+
+/* Marquee for skills */
+.marquee-container {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
