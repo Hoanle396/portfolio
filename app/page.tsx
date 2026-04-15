@@ -532,7 +532,7 @@ function Experience() {
     <section id="experience" className="py-24">
       <SectionTitle index={3} sub="My professional journey so far">Experience</SectionTitle>
 
-      <div className="relative ml-3 pl-8">
+      <div className="relative ml-3 pl-8 space-y-12">
         {/* Animated line that draws downward on scroll */}
         <motion.div
           initial={{ scaleY: 0 }}
@@ -545,7 +545,7 @@ function Experience() {
 
         {experience.map((job, i) => (
           <FadeIn key={job.company} delay={i * 0.05}>
-            <div className="relative pb-12 last:pb-0">
+            <div className="relative">
               {/* Dot on line */}
               <div className="absolute -left-[41px] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950 shadow-[0_0_0_4px_#09090b]">
                 <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />
