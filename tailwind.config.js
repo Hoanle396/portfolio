@@ -16,19 +16,19 @@ module.exports = {
         bg: 'hsl(var(--bg))',
         fg: 'hsl(var(--fg))',
         brand: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7c3aed',
-          800: '#6b21a8',
-          900: '#581c87',
+          50:  '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',  // orange-400
+          500: '#f97316',  // orange-500
+          600: '#ea580c',  // orange-600
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
         },
         surface: {
-          50: '#fafafa',
+          50:  '#fafafa',
           100: '#f4f4f5',
           800: '#27272a',
           900: '#18181b',
@@ -37,11 +37,11 @@ module.exports = {
       },
       keyframes: {
         'fade-in-up': {
-          '0%': { opacity: 0, transform: 'translateY(12px)' },
+          '0%':   { opacity: 0, transform: 'translateY(12px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         shimmer: {
-          '0%': { backgroundPosition: '200% 0' },
+          '0%':   { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
         },
       },

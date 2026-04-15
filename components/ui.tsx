@@ -30,14 +30,24 @@ Card.displayName = 'Card';
 export const SectionTitle = ({
   children,
   sub,
+  index,
 }: {
   children: React.ReactNode;
   sub?: string;
+  index?: number;
 }) => (
   <div className="mb-12">
-    <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+    <div className="flex items-center gap-3 mb-3">
+      {index !== undefined && (
+        <span className="text-[11px] font-bold tabular-nums text-brand-500/60 font-mono">
+          0{index}
+        </span>
+      )}
+      <div className="h-px flex-1 max-w-[40px] bg-gradient-to-r from-brand-500/40 to-transparent" />
+    </div>
+    <h2 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
       {children}
     </h2>
-    {sub && <p className="mt-2 text-sm text-zinc-500">{sub}</p>}
+    {sub && <p className="mt-2 text-sm text-zinc-500 leading-relaxed">{sub}</p>}
   </div>
 );

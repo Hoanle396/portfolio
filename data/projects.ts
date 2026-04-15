@@ -12,7 +12,7 @@ export const projects: ProjectItem[] = [
     title: 'Nexus Code',
     description:
       'AI-powered code review SaaS with GPT-4 & Claude integration, team workspaces, Git webhooks, and USDC blockchain payments.',
-    tech: ['Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'Solidity', 'ethers.js'],
+    tech: ['Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'Solidity'],
     href: 'https://nexus-code.hoanle.app/',
     featured: true,
   },

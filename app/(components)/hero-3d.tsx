@@ -1,7 +1,7 @@
 'use client';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, OrbitControls, Stars } from '@react-three/drei';
-import { useMemo, useRef, useState, createRef } from 'react';
+import { Environment, Stars } from '@react-three/drei';
+import { useMemo, useState, createRef } from 'react';
 import * as THREE from 'three';
 
 type PlanetDef = {
@@ -192,7 +192,7 @@ function SolarSystem({
 }
 
 export function Hero3D() {
-  const [ui, setUI] = useState({
+  const [ui] = useState({
     planetCount: 6,
     timeScale: 1.0,
     sizeScale: 0.5,
@@ -210,6 +210,7 @@ export function Hero3D() {
         position: 'absolute',
         top: 132,
         left: 180,
+        pointerEvents: 'none',   // ← fix: never block clicks on hero content
       }}
       className="hidden md:block"
       camera={{ position: [0, 2.2, 7.5], fov: 45 }}
@@ -226,7 +227,6 @@ export function Hero3D() {
         selfRotationScale={ui.selfRotationScale}
       />
       <Environment preset="night" />
-      <OrbitControls enablePan={false} minDistance={3} maxDistance={12} />
     </Canvas>
   );
 }

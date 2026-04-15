@@ -18,7 +18,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: #09090b;
@@ -33,37 +33,57 @@ body {
 
 /* --- Custom animation helpers --- */
 @keyframes floatSlow {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-28px); }
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-28px); }
   100% { transform: translateY(0px); }
 }
 @keyframes pulseGlow {
   0%, 100% { opacity: 0.55; filter: blur(32px); }
-  50% { opacity: 0.9; filter: blur(40px); }
+  50%       { opacity: 0.9;  filter: blur(40px); }
 }
 @keyframes marqueeX {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 @keyframes slideUp {
-  0% { opacity: 0; transform: translateY(20px); }
+  0%   { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
 }
 
 .animate-float-slow { animation: floatSlow 10s ease-in-out infinite; }
-.animate-glow { animation: pulseGlow 8s ease-in-out infinite; }
-.marquee-track { animation: marqueeX 30s linear infinite; }
-.animate-slide-up { animation: slideUp 0.6s cubic-bezier(.4,0,.2,1) both; }
+.animate-glow       { animation: pulseGlow  8s ease-in-out infinite; }
+.marquee-track      { animation: marqueeX  30s linear infinite; }
+.animate-slide-up   { animation: slideUp 0.6s cubic-bezier(.4,0,.2,1) both; }
 
-/* Subtle grid background */
+/* Gradient text shimmer — orange palette */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f97316,
+    #fb923c,
+    #fdba74,
+    #f97316
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Subtle grid background — orange tint */
 .bg-grid::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, rgba(168, 85, 247, 0.04) 1px, transparent 1px) 0 0 / 64px 64px,
-    linear-gradient(to bottom, rgba(168, 85, 247, 0.04) 1px, transparent 1px) 0 0 / 64px 64px;
-  mask: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), transparent 70%);
+    linear-gradient(to right, rgba(249, 115, 22, 0.05) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(to bottom, rgba(249, 115, 22, 0.05) 1px, transparent 1px) 0 0 / 64px 64px;
+  mask: radial-gradient(ellipse at center, rgba(0,0,0,0.8), transparent 70%);
   pointer-events: none;
 }
 
@@ -71,12 +91,15 @@ body {
 .card-hover {
   transition:
     border-color 0.3s ease,
-    transform 0.4s cubic-bezier(0.34, 1.56, 0.34, 1),
-    box-shadow 0.3s ease;
+    transform    0.4s cubic-bezier(0.34, 1.56, 0.34, 1),
+    box-shadow   0.3s ease,
+    background-color 0.3s ease;
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.07),
+    0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Glass */
@@ -103,4 +126,9 @@ body {
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* Glow ring utility — orange */
+.glow-brand {
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.12);
 }
