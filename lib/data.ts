@@ -6,7 +6,7 @@ export const profile = {
   status: "Available for new opportunities",
   bio: "Full-stack developer building scalable web apps and blockchain products with modern tech stacks. I care about clean code, great UX, and shipping fast.",
   email: "hoan@hoanle.app",
-  github: "https://github.com/hoanle",
+  github: "https://github.com/hoanle396",
   resume: "/resume.pdf",
   stats: [
     { value: 3, suffix: "+", label: "Years experience" },
